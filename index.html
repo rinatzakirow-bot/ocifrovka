@@ -115,7 +115,6 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                <!-- Изменено font-bold на font-semibold -->
                 <span class="font-semibold text-xl tracking-tight ml-2">Ваш личный специалист по оцифровке</span>
             </div>
             <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition flex items-center shadow-sm">
@@ -133,29 +132,10 @@
             <h1 class="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
                 Оцифровка видео и аудиокассет <br> <span class="text-blue-600">с бесплатным выездом</span>
             </h1>
-            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-12">
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-4">
                 Сохраните семейные аудио- и видеоархивы. 
                 Я лично приеду за вашими кассетами по Москве или оплачу доставку из любого города России!
             </p>
-
-            <div class="flex flex-wrap justify-center gap-5">
-                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold text-xl">✓</span>
-                    <span class="text-base font-medium">1 день — готовность малых заказов</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold text-xl">✓</span>
-                    <span class="text-base font-medium">Выезд по Москве — 0 ₽</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold text-xl">✓</span>
-                    <span class="text-base font-medium">Регионы — доставка за мой счет</span>
-                </div>
-                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold text-xl">✓</span>
-                    <span class="text-base font-medium">Оплата после проверки</span>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -165,55 +145,80 @@
             <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Ответы на все вопросы</h2>
             
             <div class="space-y-6">
-                <!-- FAQ Cards -->
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(1)">
+                <!-- FAQ Cards with Icons -->
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(1)">
                     <h3 class="font-bold text-xl">С какими форматами кассет работаю?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(2)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(2)">
                     <h3 class="font-bold text-xl">Как передать кассеты?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 21v-2a4 4 0 014-4h6a4 4 0 014 4v2" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(3)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(3)">
                     <h3 class="font-bold text-xl">Стоимость оцифровки?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(4)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(4)">
                     <h3 class="font-bold text-xl">Срок исполнения?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <!-- Пункт Качество видео -->
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(12)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(12)">
                     <h3 class="font-bold text-xl">Качество видео?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(5)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(5)">
                     <h3 class="font-bold text-xl">На каком оборудовании?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(6)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(6)">
                     <h3 class="font-bold text-xl">В каком формате я получу записи?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(7)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(7)">
                     <h3 class="font-bold text-xl">Сколько места займут файлы?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(8)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(8)">
                     <h3 class="font-bold text-xl">Способы получения готовых файлов?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(9)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(9)">
                     <h3 class="font-bold text-xl">Кассете требуется ремонт?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(10)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(10)">
                     <h3 class="font-bold text-xl">Конфиденциальность?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
                 </div>
-                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(11)">
+                <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-between items-center transition-all" onclick="openFaq(11)">
                     <h3 class="font-bold text-xl">Почему выбирают меня?</h3>
-                    <span class="text-3xl text-blue-600">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
                 </div>
             </div>
 
@@ -230,8 +235,8 @@
     <div id="faqModal" onclick="closeFaq()">
         <div class="glass-panel" onclick="event.stopPropagation()">
             <div class="p-8 md:p-12">
-                <h2 id="faqTitle" class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-900 leading-tight"></h2>
-                <div id="faqBody" class="text-lg md:text-xl text-gray-700 leading-relaxed space-y-4"></div>
+                <h2 id="faqTitle" class="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 leading-tight"></h2>
+                <div id="faqBody" class="text-xl md:text-2xl text-gray-700 leading-relaxed space-y-6"></div>
 
                 <button onclick="closeFaq()" class="mt-12 w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-5 rounded-2xl transition-colors text-lg flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -258,42 +263,42 @@
 
     <!-- Modal Form -->
     <div id="orderModal" onclick="closeModal()">
-        <div class="glass-panel p-8" onclick="event.stopPropagation()">
+        <div class="glass-panel p-8 md:p-12" onclick="event.stopPropagation()">
             <div id="formWrapper">
-                <h3 class="text-2xl font-bold mb-6">Оформить заказ</h3>
-                <form action="https://formspree.io/f/xkowabkp" method="POST" id="orderForm" class="space-y-5">
+                <h3 class="text-3xl md:text-4xl font-bold mb-10">Оформить заказ</h3>
+                <form action="https://formspree.io/f/xkowabkp" method="POST" id="orderForm" class="space-y-8">
                     <input type="hidden" name="_subject" value="Новый заказ: Ваш личный специалист по оцифровке">
                     <div>
-                        <label class="block text-base font-semibold mb-2">Ваш Email</label>
-                        <input type="email" name="email" required placeholder="example@mail.ru" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                        <label class="block text-xl font-bold mb-3">Ваш Email</label>
+                        <input type="email" name="email" required placeholder="example@mail.ru" class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm text-xl md:text-2xl transition-all">
                     </div>
                     <div>
-                        <label class="block text-base font-semibold mb-2">Номер телефона</label>
-                        <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                        <label class="block text-xl font-bold mb-3">Номер телефона</label>
+                        <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm text-xl md:text-2xl transition-all">
                     </div>
                     <div>
-                        <label class="block text-base font-semibold mb-2">Комментарий (по желанию)</label>
-                        <textarea name="message" rows="3" placeholder="Сколько кассет и какие форматы?" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"></textarea>
+                        <label class="block text-xl font-bold mb-3">Комментарий (по желанию)</label>
+                        <textarea name="message" rows="4" placeholder="Сколько кассет и какие форматы?" class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm text-xl md:text-2xl transition-all"></textarea>
                     </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors text-lg">
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 rounded-2xl shadow-xl transition-all text-2xl active:scale-95">
                         Отправить мастеру
                     </button>
-                    <button type="button" onclick="closeModal()" class="mt-2 w-full text-gray-500 font-semibold py-2 hover:text-gray-700 transition-colors">
+                    <button type="button" onclick="closeModal()" class="mt-6 w-full text-gray-500 font-bold py-4 hover:text-gray-700 transition-colors text-xl">
                         Назад
                     </button>
-                    <p id="status" class="text-center text-base hidden"></p>
+                    <p id="status" class="text-center text-xl hidden"></p>
                 </form>
             </div>
 
-            <div id="successWrapper" class="hidden text-center py-10">
-                <div class="w-24 h-24 bg-green-100/50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
-                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div id="successWrapper" class="hidden text-center py-12">
+                <div class="w-28 h-28 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-10 shadow-inner">
+                    <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-3">Спасибо за заказ!</h3>
-                <p class="text-xl text-gray-600">Сейчас с Вами свяжусь.</p>
-                <button onclick="closeModal()" class="mt-10 text-blue-600 font-bold text-lg hover:underline">Закрыть окно</button>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Спасибо за заказ!</h3>
+                <p class="text-2xl text-gray-600">Сейчас с Вами свяжусь.</p>
+                <button onclick="closeModal()" class="mt-12 text-blue-600 font-bold text-2xl hover:underline">Закрыть окно</button>
             </div>
         </div>
     </div>
@@ -306,7 +311,7 @@
         const faqData = {
             1: {
                 title: "С какими форматами кассет работаю?",
-                body: "<p>Я работаю практически со всеми бытовыми форматами:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>VHS / VHS-C</strong></li><li><strong>Video8 / Hi8 / Digital8</strong></li><li><strong>MiniDV</strong></li><li><strong>Аудиокассеты</strong></li></ul>"
+                body: "<p>Я работаю со всеми бытовыми форматами:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>VHS / VHS-C</strong></li><li><strong>Video8 / Hi8 / Digital8</strong></li><li><strong>MiniDV</strong></li><li><strong>Аудиокассеты</strong></li></ul>"
             },
             2: {
                 title: "Как передать кассеты?",
@@ -314,7 +319,7 @@
             },
             3: {
                 title: "Стоимость оцифровки?",
-                body: "<p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p>"
+                body: "<p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p><p class='mt-4 font-semibold'>Важно: Оплата производится только за ваши личные семейные записи. Фильмы, записи с ТВ и прочий контент, не являющийся вашим архивом, я удаляю БЕСПЛАТНО.</p>"
             },
             4: {
                 title: "Срок исполнения?",
@@ -326,7 +331,7 @@
             },
             5: {
                 title: "На каком оборудовании?",
-                body: "<p>Для получения наилучшего качества изображения и звука я использую только проверенное профессиональное оборудование уровня студий вещания:</p><ul class='list-disc pl-6 mt-4 space-y-3'><li><strong>Видеодеки:</strong> Профессиональные S-VHS видеомагнитофоны с износостойкои головками, обеспечивающие стабильное считывание даже старых и помятых лент.</li><li><strong>TBC-стабилизация:</strong> Использование внешних временных корректоров (Time Base Correctors), которые аппаратно выравнивают кадры, устраняют «дергание» картинки и восстанавливают поврежденные сигналы синхронизации.</li><li><strong>Конвертеры Canopus ADVC 300:</strong> Это легендарные устройства, которые производят захват видео без потерь. Они оснащены уникальной технологией цифрового шумоподавления (3D Noise Reduction) и автоматической регулировкой усиления, что позволяет вытянуть максимум деталей даже из темных или нечетких записей.</li><li><strong>Аудио-тракт:</strong> Для оцифровки звука применяются профессиональные интерфейсы, гарантирующие отсутствие фонового шума и искажений.</li></ul>"
+                body: "<p>Для получения наилучшего качества изображения и звука я использую только проверенное профессиональное оборудование уровня студий вещания:</p><ul class='list-disc pl-6 mt-4 space-y-3'><li><strong>Видеодеки:</strong> Профессиональные S-VHS видеомагнитофоны with износостойкими головками, обеспечивающие стабильное считывание даже старых и помятых лент.</li><li><strong>TBC-стабилизация:</strong> Использование внешних временных корректоров (Time Base Correctors), которые аппаратно выравнивают кадры, устраняют «дергание» картинки и восстанавливают поврежденные сигналы синхронизации.</li><li><strong>Конвертеры Canopus ADVC 300:</strong> Это легендарные устройства, которые производят захват видео без потерь. Они оснащены уникальной технологией цифрового шумоподавления (3D Noise Reduction) и автоматической регулировкой усиления, что позволяет вытянуть максимум деталей даже из темных или нечетких записей.</li><li><strong>Аудио-тракт:</strong> Для оцифровки звука применяются профессиональные интерфейсы, гарантирующие отсутствие фонового шума и искажений.</li></ul>"
             },
             6: {
                 title: "В каком формате я получу записи?",
