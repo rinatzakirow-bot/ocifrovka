@@ -9,17 +9,17 @@
     <style>
         /* Базовые настройки для удобства чтения на мобильных устройствах */
         html {
-            font-size: 18px; /* Увеличенный базовый размер шрифта */
+            font-size: 18px; 
         }
         @media (min-width: 768px) {
             html {
-                font-size: 16px; /* Возврат к стандарту для десктопов */
+                font-size: 16px; 
             }
         }
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            line-height: 1.6; /* Увеличенный межстрочный интервал */
+            line-height: 1.6; 
         }
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -33,7 +33,6 @@
             animation: pulse-blue 2s infinite;
         }
 
-        /* Анимация мерцания для предупреждения в калькуляторе */
         @keyframes blinker {
             50% { opacity: 0.3; }
         }
@@ -41,7 +40,6 @@
             animation: blinker 2s linear infinite;
         }
 
-        /* Анимация для призыва к действию в калькуляторе */
         @keyframes pulse-text {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.7; transform: scale(1.02); }
@@ -50,20 +48,18 @@
             animation: pulse-text 2s ease-in-out infinite;
         }
 
-        /* Общие стили модальных окон с эффектом стекла */
         #orderModal, #faqModal {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(15, 23, 42, 0.4); /* Полупрозрачный темный фон */
-            backdrop-filter: blur(8px); /* Размытие заднего фона */
+            background: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(8px); 
             align-items: center;
             justify-content: center;
             padding: 1rem;
         }
 
-        /* Контент модального окна */
         .glass-panel {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -77,12 +73,10 @@
             position: relative;
         }
 
-        /* Стили для полноэкранного FAQ на мобильных */
         #faqModal .glass-panel {
             max-width: 42rem;
         }
 
-        /* Стили для плавающей кнопки */
         .sticky-order-btn {
             position: fixed;
             bottom: 24px;
@@ -92,12 +86,10 @@
             font-size: 1.3rem;
             animation: pulse-blue 2s infinite;
         }
-        /* Улучшение тач-зон */
         input, textarea, button {
             font-size: 16px !important;
         }
 
-        /* Изящная подложка для финального CTA */
         .elegant-cta-bg {
             background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             position: relative;
@@ -112,6 +104,37 @@
             height: 200%;
             background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
             pointer-events: none;
+        }
+
+        /* Улучшенные кнопки калькулятора */
+        .calc-btn {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            touch-action: manipulation;
+        }
+        .calc-btn-minus {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 2px solid #e2e8f0;
+        }
+        .calc-btn-minus:active {
+            background-color: #e2e8f0;
+            transform: scale(0.9);
+        }
+        .calc-btn-plus {
+            background-color: #2563eb;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+        .calc-btn-plus:active {
+            background-color: #1d4ed8;
+            transform: scale(0.9);
         }
     </style>
 </head>
@@ -156,7 +179,7 @@
         </div>
     </section>
 
-    <!-- FAQ / Questions Section -->
+    <!-- FAQ Section -->
     <section class="py-16 bg-white" id="faq">
         <div class="container mx-auto px-4 max-w-3xl">
             <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Ответы на все вопросы</h2>
@@ -257,10 +280,10 @@
                             <label class="block text-gray-800 font-bold text-lg mb-1">От камеры (маленькие)</label>
                             <p class="text-sm text-gray-500">До 1.5ч (1800₽/кассета)</p>
                         </div>
-                        <div class="flex items-center gap-2 bg-white rounded-2xl p-2 border-2 border-blue-200 shadow-inner self-center">
-                            <button onclick="changeCalcValue('cam', -1)" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-xl text-blue-700 font-bold text-2xl hover:bg-blue-200 active:scale-90 transition-all shadow-sm">－</button>
+                        <div class="flex items-center gap-4 self-center">
+                            <button onclick="changeCalcValue('cam', -1)" class="calc-btn calc-btn-minus font-bold text-3xl">－</button>
                             <input type="number" id="camCountInput" value="0" min="0" class="w-20 text-center text-5xl font-extrabold bg-transparent outline-none pointer-events-none text-gray-900" readonly>
-                            <button onclick="changeCalcValue('cam', 1)" class="w-12 h-12 flex items-center justify-center bg-blue-600 rounded-xl text-white font-bold text-2xl hover:bg-blue-700 active:scale-90 transition-all shadow-sm">＋</button>
+                            <button onclick="changeCalcValue('cam', 1)" class="calc-btn calc-btn-plus font-bold text-3xl">＋</button>
                         </div>
                     </div>
 
@@ -270,10 +293,10 @@
                             <label class="block text-gray-800 font-bold text-lg mb-1">Видеокассеты от видеомагнитофона</label>
                             <p class="text-sm text-gray-500">До 3ч (3600₽/кассета)</p>
                         </div>
-                        <div class="flex items-center gap-2 bg-white rounded-2xl p-2 border-2 border-blue-200 shadow-inner self-center">
-                            <button onclick="changeCalcValue('vhs', -1)" class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-xl text-blue-700 font-bold text-2xl hover:bg-blue-200 active:scale-90 transition-all shadow-sm">－</button>
+                        <div class="flex items-center gap-4 self-center">
+                            <button onclick="changeCalcValue('vhs', -1)" class="calc-btn calc-btn-minus font-bold text-3xl">－</button>
                             <input type="number" id="vhsCountInput" value="0" min="0" class="w-20 text-center text-5xl font-extrabold bg-transparent outline-none pointer-events-none text-gray-900" readonly>
-                            <button onclick="changeCalcValue('vhs', 1)" class="w-12 h-12 flex items-center justify-center bg-blue-600 rounded-xl text-white font-bold text-2xl hover:bg-blue-700 active:scale-90 transition-all shadow-sm">＋</button>
+                            <button onclick="changeCalcValue('vhs', 1)" class="calc-btn calc-btn-plus font-bold text-3xl">＋</button>
                         </div>
                     </div>
                 </div>
@@ -289,7 +312,7 @@
                 </div>
             </div>
 
-            <!-- Увеличенная кнопка под FAQ -->
+            <!-- CTA Button -->
             <div class="mt-16 text-center">
                 <button onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white text-2xl md:text-3xl font-bold py-6 px-16 rounded-full shadow-2xl transition-all w-full max-w-xl">
                     Сделать заказ
@@ -347,7 +370,6 @@
                         <label class="block text-xl font-bold mb-3">Комментарий (по желанию)</label>
                         <textarea name="message" rows="4" placeholder="Сколько кассет и какие форматы?" class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm text-xl md:text-2xl transition-all"></textarea>
                     </div>
-                    <!-- Увеличенная кнопка формы -->
                     <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-7 rounded-2xl shadow-xl transition-all text-2xl md:text-3xl active:scale-95">
                         Отправить мастеру
                     </button>
@@ -385,36 +407,35 @@
                 title: "Как передать кассеты?",
                 body: `<p>Сейчас работаю исключительно только доставкой:</p>
                        <ul class='list-disc pl-6 mt-4 space-y-3'>
-                           <li><strong>По Москве (в пределах МКАД):</strong> Я <strong>заеду в любой удобный для вас день в первой половине дня</strong>, чтобы забрать кассеты и привезти готовый результат. Это гарантирует максимальную сохранность ваших архивов.</li>
+                           <li><strong>По Москве (в пределах МКАД):</strong> Я <strong>заеду в любой удобный для вас день в первой половине дня</strong>, чтобы забрать кассеты и привезти готовый результат.</li>
                            <li><strong>За МКАД и по всей РФ:</strong> Мы используем проверенную курьерскую доставку СДЭКом или Почтой.</li>
-                           <li><strong>Бесплатно для вас:</strong> Все транспортные расходы (и мой приезд, и курьерские службы) я полностью беру на себя.</li>
-                           <li><strong>Экономия времени:</strong> Вам не нужно никуда ехать и искать пункты приема.</li>
-                       </ul>
-                       <p class='mt-4'>Просто оформите заказ, и мы согласуем время моего визита или вызова курьера.</p>`
+                           <li><strong>Бесплатно для вас:</strong> Все транспортные расходы я полностью беру на себя.</li>
+                           <li><strong>Экономия времени:</strong> Вам не нужно никуда ехать.</li>
+                       </ul>`
             },
             3: {
                 title: "Стоимость оцифровки?",
-                body: "<p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p><p class='mt-4 font-semibold'>Важно: Оплата производится только за ваши личные семейные записи. Фильмы, записи с ТВ и прочий контент, не являющийся вашим архивом, я удаляю БЕСПЛАТНО.</p>"
+                body: "<p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p><p class='mt-4 font-semibold'>Важно: Оплата производится только за ваши личные семейные записи. Фильмы и записи с ТВ я удаляю БЕСПЛАТНО.</p>"
             },
             4: {
                 title: "Срок исполнения?",
-                body: "<p>Если у Вас менее 6 кассет, то ссылочки на скачивание файлов оцифровки будут у Вас уже на следующий день. Если больше, то работа займет 2–3 дня.</p>"
+                body: "<p>Если у Вас менее 6 кассет, то ссылочки будут у Вас уже на следующий день. Если больше, то работа займет 2–3 дня.</p>"
             },
             12: {
                 title: "Качество видео?",
-                body: "<p>Я гарантирую <strong>максимально возможный результат</strong> для ваших пленок. Использование профессиональных внешних TBC-стабилизаторов и конвертеров <strong>Canopus ADVC 300</strong> позволяет устранить дрожание картинки и восстановить синхронизацию звука. Каждое видео проходит через тракт шумоподавления, что делает изображение чище и стабильнее, чем при обычном просмотре через телевизор.</p>"
+                body: "<p>Использование профессиональных внешних TBC-стабилизаторов и конвертеров <strong>Canopus ADVC 300</strong> позволяет устранить дрожание картинки и восстановить синхронизацию звука.</p>"
             },
             5: {
                 title: "На каком оборудовании?",
-                body: "<p>Для получения наилучшего качества изображения и звука я использую только проверенное профессиональное оборудование уровня студий вещания:</p><ul class='list-disc pl-6 mt-4 space-y-3'><li><strong>Видеодеки:</strong> Профессиональные S-VHS видеомагнитофоны with износостойкими головками, обеспечивающие стабильное считывание даже старых и помятых лент.</li><li><strong>TBC-стабилизация:</strong> Использование внешних временных корректоров (Time Base Correctors), которые аппаратно выравнивают кадры, устраняют «дергание» картинки и восстанавливают поврежденные сигналы синхронизации.</li><li><strong>Конвертеры Canopus ADVC 300:</strong> Это легендарные устройства, которые производят захват видео без потерь. Они оснащены уникальной технологией цифрового шумоподавления (3D Noise Reduction) и автоматической регулировкой усиления, что позволяет вытянуть максимум деталей даже из темных или нечетких записей.</li><li><strong>Аудио-тракт:</strong> Для оцифровки звука применяются профессиональные интерфейсы, гарантирующие отсутствие фонового шума и искажений.</li></ul>"
+                body: "<p>Я использую профессиональные S-VHS видеомагнитофоны и внешние корректоры временных ошибок (TBC) в связке с конвертерами Canopus ADVC 300 для захвата видео без потерь.</p>"
             },
             13: {
                 title: "Не знаете что на кассетах?",
-                body: "<p>Если у вас есть кассеты с неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 1800 ₽.</p>"
+                body: "<p>Если содержимое неизвестно, я отправлю вам три скриншота с каждой кассеты.</p><p class='mt-4'><strong>Стоимость:</strong> 300 ₽ за кассету.</p>"
             },
             6: {
                 title: "В каком формате я получу записи?",
-                body: "<p>Видео: <strong>MPEG-2 (720x576)</strong>. Аудио: <strong>MP3</strong>.</p><p class='mt-4'>Это самый оптимальный вариант для оцифровки кассет, обеспечивающий баланс качества и совместимости. Важно понимать: когда кто-то обещает оцифровать старые кассеты в <strong>высоком разрешении (HD или 4K) — это ложь и чистый маркетинг</strong>. Физическое разрешение пленки ограничено, и искусственное растягивание картинки не добавит деталей, а только создаст «мыло» и цифровые артефакты, не давая реального результата.</p>"
+                body: "<p>Видео: <strong>MPEG-2 (720x576)</strong>. Аудио: <strong>MP3</strong>. Это самый оптимальный вариант для оцифровки кассет.</p>"
             },
             7: {
                 title: "Сколько места займут файлы?",
@@ -430,15 +451,14 @@
             },
             10: {
                 title: "Конфиденциальность?",
-                body: "<p>Ваше доверие — мой главный приоритет. Я гарантирую <strong>100% конфиденциальность</strong> ваших личных архивов:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>Личная ответственность:</strong> Я работает один, без наемных сотрудников. Ваше видео не попадет в чужие руки.</li><li><strong>Никаких публикаций:</strong> Я никогда не использую фрагменты клиентских записей в рекламе или портфолио без письменного согласия.</li><li><strong>Безопасное хранение:</strong> Файлы хранятся на защищенном локальном диске без доступа из интернета.</li><li><strong>Гарантированное удаление:</strong> Все копии ваших записей безвозвратно удаляются из моей системы ровно через 7 дней после того, как вы подтвердили получение и проверку заказа.</li></ul>"
+                body: "<p>Я работаю один. Файлы хранятся на защищенном локальном диске и удаляются через 7 дней после выдачи заказа.</p>"
             },
             11: {
                 title: "Почему выбирают меня?",
-                body: "<p>Выбирая меня, вы получаете не просто услугу, а бережное отношение к вашей памяти и профессиональный подход к каждой минуте записи:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>Честный расчет времени:</strong> В отличие от многих студий, я беру оплату только за <strong>фактическую длительность полезной записи</strong>. Пустые места, телевизионный «шум» и телепередачи, записанные поверх домашних архивов, в стоимость не включаются.</li><li><strong>Профессиональное «железо»:</strong> Я использую профессиональные видеодеки и легендарные конвертеры <strong>Canopus ADVC 300</strong>. Это оборудование аппаратно устраняет шумы и стабилизирует «плавающую» картинку еще на этапе захвата, что невозможно сделать программно.</li><li><strong>Бесплатный сервис «от двери до двери»:</strong> По Москве в пределах МКАД я заезжаю за кассетами лично. Для регионов и области — полностью оплачиваю доставку. Вам не нужно тратить время на логистику.</li><li><strong>Проверка перед оплатой:</strong> Вы платите только тогда, когда получили файлы и убедились в качестве моей работы.</li><li><strong>Личный контакт:</strong> Вы общаетесь напрямую с мастером, который выполняет работу, а не с менеджером колл-центра. Любые ваши пожелания будут учтены мгновенно.</li></ul>"
+                body: "<p>Честный расчет только за полезное время записи, профессиональное оборудование и бесплатный сервис доставки «от двери до двери».</p>"
             }
         };
 
-        // Калькулятор
         function changeCalcValue(type, delta) {
             const input = document.getElementById(type + 'CountInput');
             let val = parseInt(input.value) + delta;
@@ -500,41 +520,27 @@
         }
         
         const form = document.getElementById("orderForm");
-        async function handleSubmit(event) {
+        form.addEventListener("submit", async (event) => {
           event.preventDefault();
-          const status = document.getElementById("status");
           const btn = document.getElementById("submitBtn");
-          const data = new FormData(event.target);
-          
           btn.disabled = true;
           btn.innerText = "Отправка...";
 
           fetch(event.target.action, {
             method: form.method,
-            body: data,
+            body: new FormData(event.target),
             headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
               document.getElementById('formWrapper').classList.add('hidden');
               document.getElementById('successWrapper').classList.remove('hidden');
               form.reset();
-            } else {
-              response.json().then(data => {
-                status.innerText = "Ошибка отправки. Попробуйте еще раз.";
-                status.classList.remove("hidden");
-                status.classList.add("text-red-500", "mt-4");
-              })
             }
-          }).catch(error => {
-            status.innerText = "Ошибка сети.";
-            status.classList.remove("hidden");
-            status.classList.add("text-red-500", "mt-4");
           }).finally(() => {
             btn.disabled = false;
             btn.innerText = "Отправить мастеру";
           });
-        }
-        form.addEventListener("submit", handleSubmit);
+        });
     </script>
 </body>
 </html>
