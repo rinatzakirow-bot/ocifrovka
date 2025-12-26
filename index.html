@@ -79,6 +79,23 @@
         input, textarea, button {
             font-size: 16px !important;
         }
+
+        /* Изящная подложка для финального CTA */
+        .elegant-cta-bg {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .elegant-cta-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -98,7 +115,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
-                <span class="font-bold text-xl tracking-tight ml-2">ЦифраАрхив</span>
+                <!-- Изменено font-bold на font-semibold -->
+                <span class="font-semibold text-xl tracking-tight ml-2">Ваш личный специалист по оцифровке</span>
             </div>
             <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition flex items-center shadow-sm">
                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -149,7 +167,7 @@
             <div class="space-y-6">
                 <!-- FAQ Cards -->
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(1)">
-                    <h3 class="font-bold text-xl">С какими форматами работаю?</h3>
+                    <h3 class="font-bold text-xl">С какими форматами кассет работаю?</h3>
                     <span class="text-3xl text-blue-600">+</span>
                 </div>
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(2)">
@@ -162,6 +180,11 @@
                 </div>
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(4)">
                     <h3 class="font-bold text-xl">Срок исполнения?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
+                </div>
+                <!-- Пункт Качество видео -->
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(12)">
+                    <h3 class="font-bold text-xl">Качество видео?</h3>
                     <span class="text-3xl text-blue-600">+</span>
                 </div>
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(5)">
@@ -181,7 +204,7 @@
                     <span class="text-3xl text-blue-600">+</span>
                 </div>
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(9)">
-                    <h3 class="font-bold text-xl">Нужен ли ремонт кассет?</h3>
+                    <h3 class="font-bold text-xl">Кассете требуется ремонт?</h3>
                     <span class="text-3xl text-blue-600">+</span>
                 </div>
                 <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(10)">
@@ -206,33 +229,27 @@
     <!-- FAQ Modal Container -->
     <div id="faqModal" onclick="closeFaq()">
         <div class="glass-panel" onclick="event.stopPropagation()">
-            <!-- Заголовок убран, чтобы соответствовать запросу о перемещении кнопок -->
             <div class="p-8 md:p-12">
                 <h2 id="faqTitle" class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-900 leading-tight"></h2>
                 <div id="faqBody" class="text-lg md:text-xl text-gray-700 leading-relaxed space-y-4"></div>
-                
-                <!-- Кнопка Заказа ТЕПЕРЬ СВЕРХУ (под текстом) -->
-                <button onclick="closeFaq(); openModal();" class="mt-12 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-lg transition-colors text-lg">
-                    Сделать заказ
-                </button>
 
-                <!-- Кнопка Назад ТЕПЕРЬ СНИЗУ -->
-                <button onclick="closeFaq()" class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-4 rounded-2xl transition-colors text-lg flex items-center justify-center">
+                <button onclick="closeFaq()" class="mt-12 w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-5 rounded-2xl transition-colors text-lg flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
-                    Назад к списку
+                    Назад к списку вопросов
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Final CTA -->
-    <section class="py-16 bg-gray-900 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8">Сохраните историю вашей семьи</h2>
+    <!-- Final CTA с изящной подложкой -->
+    <section class="py-24 elegant-cta-bg text-white">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 tracking-tight">Сохраните историю вашей семьи</h2>
+            <p class="text-blue-200 mb-12 text-lg max-w-xl mx-auto opacity-90">Ваши воспоминания заслуживают самого лучшего качества и бережного отношения.</p>
             <div class="flex justify-center flex-wrap gap-5">
-                 <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-12 py-5 rounded-full font-bold transition-all shadow-xl flex items-center text-lg">
+                 <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-12 py-5 rounded-full font-bold transition-all shadow-2xl flex items-center text-lg hover:scale-105 active:scale-95">
                     Связаться в Telegram
                 </a>
             </div>
@@ -245,7 +262,7 @@
             <div id="formWrapper">
                 <h3 class="text-2xl font-bold mb-6">Оформить заказ</h3>
                 <form action="https://formspree.io/f/xkowabkp" method="POST" id="orderForm" class="space-y-5">
-                    <input type="hidden" name="_subject" value="Новый заказ: ЦифраАрхив">
+                    <input type="hidden" name="_subject" value="Новый заказ: Ваш личный специалист по оцифровке">
                     <div>
                         <label class="block text-base font-semibold mb-2">Ваш Email</label>
                         <input type="email" name="email" required placeholder="example@mail.ru" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
@@ -261,7 +278,6 @@
                     <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors text-lg">
                         Отправить мастеру
                     </button>
-                    <!-- Кнопка Назад ТЕПЕРЬ СНИЗУ -->
                     <button type="button" onclick="closeModal()" class="mt-2 w-full text-gray-500 font-semibold py-2 hover:text-gray-700 transition-colors">
                         Назад
                     </button>
@@ -269,7 +285,6 @@
                 </form>
             </div>
 
-            <!-- Success message wrapper -->
             <div id="successWrapper" class="hidden text-center py-10">
                 <div class="w-24 h-24 bg-green-100/50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
                     <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -284,13 +299,13 @@
     </div>
 
     <footer class="py-10 border-t text-center text-gray-500 text-base bg-white">
-        &copy; 2025 ЦифраАрхив. Ринат. Москва и РФ.
+        &copy; 2025 Ваш личный специалист по оцифровке. Ринат. Москва и РФ.
     </footer>
 
     <script>
         const faqData = {
             1: {
-                title: "С какими форматами работаю?",
+                title: "С какими форматами кассет работаю?",
                 body: "<p>Я работаю практически со всеми бытовыми форматами:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>VHS / VHS-C</strong></li><li><strong>Video8 / Hi8 / Digital8</strong></li><li><strong>MiniDV</strong></li><li><strong>Аудиокассеты</strong></li></ul>"
             },
             2: {
@@ -303,15 +318,19 @@
             },
             4: {
                 title: "Срок исполнения?",
-                body: "<p>До 5 кассет — 1 день. Большие архивы — по согласованию.</p>"
+                body: "<p>Если у Вас менее 6 кассет, то ссылочки на скачивание файлов оцифровки будут у Вас уже на следующий день. Если больше, то работа займет 2–3 дня.</p>"
+            },
+            12: {
+                title: "Качество видео?",
+                body: "<p>Я гарантирую <strong>максимально возможный результат</strong> для ваших пленок. Использование профессиональных внешних TBC-стабилизаторов и конвертеров <strong>Canopus ADVC 300</strong> позволяет устранить дрожание картинки и восстановить синхронизацию звука. Каждое видео проходит через тракт шумоподавления, что делает изображение чище и стабильнее, чем при обычном просмотре через телевизор.</p>"
             },
             5: {
                 title: "На каком оборудовании?",
-                body: "<p>Профессиональные деки и конвертеры Canopus ADVC 300 для лучшего качества.</p>"
+                body: "<p>Для получения наилучшего качества изображения и звука я использую только проверенное профессиональное оборудование уровня студий вещания:</p><ul class='list-disc pl-6 mt-4 space-y-3'><li><strong>Видеодеки:</strong> Профессиональные S-VHS видеомагнитофоны с износостойкои головками, обеспечивающие стабильное считывание даже старых и помятых лент.</li><li><strong>TBC-стабилизация:</strong> Использование внешних временных корректоров (Time Base Correctors), которые аппаратно выравнивают кадры, устраняют «дергание» картинки и восстанавливают поврежденные сигналы синхронизации.</li><li><strong>Конвертеры Canopus ADVC 300:</strong> Это легендарные устройства, которые производят захват видео без потерь. Они оснащены уникальной технологией цифрового шумоподавления (3D Noise Reduction) и автоматической регулировкой усиления, что позволяет вытянуть максимум деталей даже из темных или нечетких записей.</li><li><strong>Аудио-тракт:</strong> Для оцифровки звука применяются профессиональные интерфейсы, гарантирующие отсутствие фонового шума и искажений.</li></ul>"
             },
             6: {
                 title: "В каком формате я получу записи?",
-                body: "<p>Видео: MPEG-2 (720x576). Аудио: MP3.</p>"
+                body: "<p>Видео: <strong>MPEG-2 (720x576)</strong>. Аудио: <strong>MP3</strong>.</p><p class='mt-4'>Это самый оптимальный вариант для оцифровки кассет, обеспечивающий баланс качества и совместимости. Важно понимать: когда кто-то обещает оцифровать старые кассеты в <strong>высоком разрешении (HD или 4K) — это ложь и чистый маркетинг</strong>. Физическое разрешение пленки ограничено, и искусственное растягивание картинки не добавит деталей, а только создаст «мыло» и цифровые артефакты, не давая реального результата.</p>"
             },
             7: {
                 title: "Сколько места займут файлы?",
@@ -322,16 +341,16 @@
                 body: "<p>На вашу флешку или через ссылку в облаке.</p>"
             },
             9: {
-                title: "Нужен ли ремонт кассет?",
+                title: "Кассете требуется ремонт?",
                 body: "<p>Склейка или ремонт корпуса — 500 рублей за кассету.</p>"
             },
             10: {
                 title: "Конфиденциальность?",
-                body: "<p>100% приватность. Работаю один, удаляю данные через неделю после выдачи.</p>"
+                body: "<p>Ваше доверие — мой главный приоритет. Я гарантирую <strong>100% конфиденциальность</strong> ваших личных архивов:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>Личная ответственность:</strong> Я работаю один, без наемных сотрудников. Ваше видео не попадет в чужие руки.</li><li><strong>Никаких публикаций:</strong> Я никогда не использую фрагменты клиентских записей в рекламе или портфолио без письменного согласия.</li><li><strong>Безопасное хранение:</strong> Файлы хранятся на защищенном локальном диске без доступа из интернета.</li><li><strong>Гарантированное удаление:</strong> Все копии ваших записей безвозвратно удаляются из моей системы ровно через 7 дней после того, как вы подтвердили получение и проверку заказа.</li></ul>"
             },
             11: {
                 title: "Почему выбирают меня?",
-                body: "<p>Честный расчет (без учета пустот), профессиональное железо и личная ответственность.</p>"
+                body: "<p>Выбирая меня, вы получаете не просто услугу, а бережное отношение к вашей памяти и профессиональный подход к каждой минуте записи:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>Честный расчет времени:</strong> В отличие от многих студий, я беру оплату только за <strong>фактическую длительность полезной записи</strong>. Пустые места, телевизионный «шум» и телепередачи, записанные поверх домашних архивов, в стоимость не включаются.</li><li><strong>Профессиональное «железо»:</strong> Я использую профессиональные видеодеки и легендарные конвертеры <strong>Canopus ADVC 300</strong>. Это оборудование аппаратно устраняет шумы и стабилизирует «плавающую» картинку еще на этапе захвата, что невозможно сделать программно.</li><li><strong>Бесплатный сервис «от двери до двери»:</strong> Вам не нужно никуда ехать. Я сам заберу кассеты в удобное для вас время по Москве и привезу обратно. Для регионов — полностью оплачиваю доставку СДЭКом или Почтой.</li><li><strong>Проверка перед оплатой:</strong> Вы платите только тогда, когда получили файлы и убедились в качестве моей работы.</li><li><strong>Личный контакт:</strong> Вы общаетесь напрямую с мастером, который выполняет работу, а не с менеджером колл-центра. Любые ваши пожелания будут учтены мгновенно.</li></ul>"
             }
         };
 
