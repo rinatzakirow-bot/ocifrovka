@@ -7,24 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Базовые настройки для удобства чтения на мобильных устройствах */
+        html {
+            font-size: 18px; /* Увеличенный базовый размер шрифта */
+        }
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px; /* Возврат к стандарту для десктопов */
+            }
+        }
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-        }
-        .faq-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .faq-card.active .faq-content {
-            max-height: 900px;
-            margin-top: 1rem;
-        }
-        .faq-card.active .icon-plus {
-            transform: rotate(45deg);
+            line-height: 1.6; /* Увеличенный межстрочный интервал */
         }
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -37,30 +32,60 @@
         .pulse-btn {
             animation: pulse-blue 2s infinite;
         }
-        #orderModal {
+
+        /* Общие стили модальных окон с эффектом стекла */
+        #orderModal, #faqModal {
             display: none;
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(15, 23, 42, 0.4); /* Полупрозрачный темный фон */
+            backdrop-filter: blur(8px); /* Размытие заднего фона */
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
+
+        /* Контент модального окна */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 32rem;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Стили для полноэкранного FAQ на мобильных */
+        #faqModal .glass-panel {
+            max-width: 42rem;
+        }
+
         /* Стили для плавающей кнопки */
         .sticky-order-btn {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 40;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            animation: pulse-blue 2s infinite;
+        }
+        /* Улучшение тач-зон */
+        input, textarea, button {
+            font-size: 16px !important;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
     <!-- Floating Action Button -->
-    <button onclick="openModal()" class="sticky-order-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full flex items-center transition-all md:py-4 md:px-8">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button onclick="openModal()" class="sticky-order-btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full flex items-center transition-all md:py-4 md:px-8 shadow-2xl">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
         Сделать заказ
@@ -75,8 +100,8 @@
                 </svg>
                 <span class="font-bold text-xl tracking-tight ml-2">ЦифраАрхив</span>
             </div>
-            <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition flex items-center shadow-sm">
-                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition flex items-center shadow-sm">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.52.26l.215-3.048 5.548-5.013c.24-.213-.054-.334-.373-.121l-6.858 4.318-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.847.922z"/>
                 </svg>
                 <span>Telegram</span>
@@ -87,30 +112,30 @@
     <!-- Hero Section -->
     <section class="py-12 md:py-20 gradient-bg border-b">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-8 leading-tight">
                 Оцифровка видео и аудиокассет <br> <span class="text-blue-600">с бесплатным выездом</span>
             </h1>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-12">
                 Сохраните семейные аудио- и видеоархивы. 
                 Я лично приеду за вашими кассетами по Москве или оплачу доставку из любого города России!
             </p>
 
-            <div class="flex flex-wrap justify-center gap-4">
-                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold">✓</span>
-                    <span class="text-sm font-medium">1 день — готовность малых заказов</span>
+            <div class="flex flex-wrap justify-center gap-5">
+                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
+                    <span class="text-blue-600 font-bold text-xl">✓</span>
+                    <span class="text-base font-medium">1 день — готовность малых заказов</span>
                 </div>
-                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold">✓</span>
-                    <span class="text-sm font-medium">Выезд по Москве — 0 ₽</span>
+                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
+                    <span class="text-blue-600 font-bold text-xl">✓</span>
+                    <span class="text-base font-medium">Выезд по Москве — 0 ₽</span>
                 </div>
-                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold">✓</span>
-                    <span class="text-sm font-medium">Регионы — доставка за мой счет</span>
+                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
+                    <span class="text-blue-600 font-bold text-xl">✓</span>
+                    <span class="text-base font-medium">Регионы — доставка за мой счет</span>
                 </div>
-                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-                    <span class="text-blue-600 font-bold">✓</span>
-                    <span class="text-sm font-medium">Оплата после проверки</span>
+                <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-xl shadow-sm border border-gray-100">
+                    <span class="text-blue-600 font-bold text-xl">✓</span>
+                    <span class="text-base font-medium">Оплата после проверки</span>
                 </div>
             </div>
         </div>
@@ -119,152 +144,95 @@
     <!-- FAQ / Questions Section -->
     <section class="py-16 bg-white" id="faq">
         <div class="container mx-auto px-4 max-w-3xl">
-            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">Ответы на все вопросы</h2>
+            <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Ответы на все вопросы</h2>
             
-            <div class="space-y-4">
-                <!-- Card 1 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">С какими форматами работаю?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p class="mb-2">Я работаю практически со всеми бытовыми форматами:</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li><strong>VHS / VHS-C</strong></li>
-                            <li><strong>Video8 / Hi8 / Digital8</strong></li>
-                            <li><strong>MiniDV</strong></li>
-                            <li><strong>Аудиокассеты</strong></li>
-                        </ul>
-                    </div>
+            <div class="space-y-6">
+                <!-- FAQ Cards -->
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(1)">
+                    <h3 class="font-bold text-xl">С какими форматами работаю?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Как передать кассеты?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>По Москве — приеду сам бесплатно. Из других городов РФ — СДЭК или Почта за мой счет.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(2)">
+                    <h3 class="font-bold text-xl">Как передать кассеты?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Стоимость оцифровки?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(3)">
+                    <h3 class="font-bold text-xl">Стоимость оцифровки?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 4 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Срок исполнения?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>До 5 кассет — 1 день. Большие архивы — по согласованию.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(4)">
+                    <h3 class="font-bold text-xl">Срок исполнения?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 5 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">На каком оборудовании?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>Профессиональные деки и конвертеры Canopus ADVC 300 для лучшего качества.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(5)">
+                    <h3 class="font-bold text-xl">На каком оборудовании?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 6 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">В каком формате я получу записи?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>Видео: MPEG-2 (720x576). Аудио: MP3.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(6)">
+                    <h3 class="font-bold text-xl">В каком формате я получу записи?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 7 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Сколько места займут файлы?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>~2,7 GB на час видео. ~150 MB на час аудио.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(7)">
+                    <h3 class="font-bold text-xl">Сколько места займут файлы?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 8 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Способы получения готовых файлов?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>На вашу флешку или через ссылку в облаке.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(8)">
+                    <h3 class="font-bold text-xl">Способы получения готовых файлов?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 9 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Нужен ли ремонт кассет?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>Склейка или ремонт корпуса — 500 рублей за кассету.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(9)">
+                    <h3 class="font-bold text-xl">Нужен ли ремонт кассет?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 10 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Конфиденциальность?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>100% приватность. Работаю один, удаляю данные через неделю после выдачи.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(10)">
+                    <h3 class="font-bold text-xl">Конфиденциальность?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
-
-                <!-- Card 11 -->
-                <div class="faq-card border rounded-xl p-5 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-lg">Почему выбирают меня?</h3>
-                        <span class="icon-plus text-2xl text-blue-600 transition-transform">+</span>
-                    </div>
-                    <div class="faq-content text-gray-600 leading-relaxed">
-                        <p>Честный расчет (без учета пустот), профессиональное железо и личная ответственность.</p>
-                    </div>
+                <div class="border rounded-2xl p-6 cursor-pointer hover:border-blue-400 hover:shadow-md bg-gray-50 flex justify-between items-center" onclick="openFaq(11)">
+                    <h3 class="font-bold text-xl">Почему выбирают меня?</h3>
+                    <span class="text-3xl text-blue-600">+</span>
                 </div>
             </div>
 
             <!-- Кнопка заказа под пунктами FAQ -->
-            <div class="mt-12 text-center">
-                <button onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold py-4 px-10 rounded-full shadow-xl transition-all">
+            <div class="mt-16 text-center">
+                <button onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-5 px-12 rounded-full shadow-xl transition-all">
                     Сделать заказ
                 </button>
             </div>
         </div>
     </section>
 
+    <!-- FAQ Modal Container -->
+    <div id="faqModal" onclick="closeFaq()">
+        <div class="glass-panel" onclick="event.stopPropagation()">
+            <!-- Заголовок убран, чтобы соответствовать запросу о перемещении кнопок -->
+            <div class="p-8 md:p-12">
+                <h2 id="faqTitle" class="text-2xl md:text-3xl font-extrabold mb-6 text-gray-900 leading-tight"></h2>
+                <div id="faqBody" class="text-lg md:text-xl text-gray-700 leading-relaxed space-y-4"></div>
+                
+                <!-- Кнопка Заказа ТЕПЕРЬ СВЕРХУ (под текстом) -->
+                <button onclick="closeFaq(); openModal();" class="mt-12 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-5 rounded-2xl shadow-lg transition-colors text-lg">
+                    Сделать заказ
+                </button>
+
+                <!-- Кнопка Назад ТЕПЕРЬ СНИЗУ -->
+                <button onclick="closeFaq()" class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-4 rounded-2xl transition-colors text-lg flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Назад к списку
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Final CTA -->
     <section class="py-16 bg-gray-900 text-white">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Сохраните историю вашей семьи</h2>
-            <div class="flex justify-center flex-wrap gap-4">
-                 <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-full font-bold transition-all shadow-xl flex items-center">
+            <h2 class="text-3xl font-bold mb-8">Сохраните историю вашей семьи</h2>
+            <div class="flex justify-center flex-wrap gap-5">
+                 <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-12 py-5 rounded-full font-bold transition-all shadow-xl flex items-center text-lg">
                     Связаться в Telegram
                 </a>
             </div>
@@ -272,64 +240,128 @@
     </section>
 
     <!-- Modal Form -->
-    <div id="orderModal" onclick="closeModal(event)">
-        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full m-4 relative" onclick="event.stopPropagation()">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-            
+    <div id="orderModal" onclick="closeModal()">
+        <div class="glass-panel p-8" onclick="event.stopPropagation()">
             <div id="formWrapper">
-                <h3 class="text-2xl font-bold mb-4">Оформить заказ</h3>
-                <form action="https://formspree.io/f/xkowabkp" method="POST" id="orderForm" class="space-y-4">
+                <h3 class="text-2xl font-bold mb-6">Оформить заказ</h3>
+                <form action="https://formspree.io/f/xkowabkp" method="POST" id="orderForm" class="space-y-5">
                     <input type="hidden" name="_subject" value="Новый заказ: ЦифраАрхив">
                     <div>
-                        <label class="block text-sm font-semibold mb-1">Ваш Email</label>
-                        <input type="email" name="email" required placeholder="example@mail.ru" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                        <label class="block text-base font-semibold mb-2">Ваш Email</label>
+                        <input type="email" name="email" required placeholder="example@mail.ru" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold mb-1">Номер телефона</label>
-                        <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                        <label class="block text-base font-semibold mb-2">Номер телефона</label>
+                        <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold mb-1">Комментарий (по желанию)</label>
-                        <textarea name="message" rows="3" placeholder="Сколько кассет и какие форматы?" class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                        <label class="block text-base font-semibold mb-2">Комментарий (по желанию)</label>
+                        <textarea name="message" rows="3" placeholder="Сколько кассет и какие форматы?" class="w-full bg-white/50 border border-white/20 rounded-xl px-5 py-3 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm"></textarea>
                     </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg transition-colors">
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition-colors text-lg">
                         Отправить мастеру
                     </button>
-                    <p id="status" class="text-center text-sm hidden"></p>
+                    <!-- Кнопка Назад ТЕПЕРЬ СНИЗУ -->
+                    <button type="button" onclick="closeModal()" class="mt-2 w-full text-gray-500 font-semibold py-2 hover:text-gray-700 transition-colors">
+                        Назад
+                    </button>
+                    <p id="status" class="text-center text-base hidden"></p>
                 </form>
             </div>
 
             <!-- Success message wrapper -->
-            <div id="successWrapper" class="hidden text-center py-8">
-                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div id="successWrapper" class="hidden text-center py-10">
+                <div class="w-24 h-24 bg-green-100/50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Спасибо за заказ!</h3>
-                <p class="text-lg text-gray-600">Сейчас с Вами свяжусь.</p>
-                <button onclick="closeModal()" class="mt-8 text-blue-600 font-semibold hover:underline">Закрыть окно</button>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Спасибо за заказ!</h3>
+                <p class="text-xl text-gray-600">Сейчас с Вами свяжусь.</p>
+                <button onclick="closeModal()" class="mt-10 text-blue-600 font-bold text-lg hover:underline">Закрыть окно</button>
             </div>
         </div>
     </div>
 
-    <footer class="py-8 border-t text-center text-gray-500 text-sm bg-white">
+    <footer class="py-10 border-t text-center text-gray-500 text-base bg-white">
         &copy; 2025 ЦифраАрхив. Ринат. Москва и РФ.
     </footer>
 
     <script>
-        function toggleFaq(card) {
-            card.classList.toggle('active');
+        const faqData = {
+            1: {
+                title: "С какими форматами работаю?",
+                body: "<p>Я работаю практически со всеми бытовыми форматами:</p><ul class='list-disc pl-6 mt-4 space-y-2'><li><strong>VHS / VHS-C</strong></li><li><strong>Video8 / Hi8 / Digital8</strong></li><li><strong>MiniDV</strong></li><li><strong>Аудиокассеты</strong></li></ul>"
+            },
+            2: {
+                title: "Как передать кассеты?",
+                body: "<p>По Москве — приеду сам бесплатно. Из других городов РФ — СДЭК или Почта за мой счет.</p>"
+            },
+            3: {
+                title: "Стоимость оцифровки?",
+                body: "<p>20 рублей за минуту записи. Минимальный заказ — 1800 руб. (1.5 часа).</p>"
+            },
+            4: {
+                title: "Срок исполнения?",
+                body: "<p>До 5 кассет — 1 день. Большие архивы — по согласованию.</p>"
+            },
+            5: {
+                title: "На каком оборудовании?",
+                body: "<p>Профессиональные деки и конвертеры Canopus ADVC 300 для лучшего качества.</p>"
+            },
+            6: {
+                title: "В каком формате я получу записи?",
+                body: "<p>Видео: MPEG-2 (720x576). Аудио: MP3.</p>"
+            },
+            7: {
+                title: "Сколько места займут файлы?",
+                body: "<p>~2,7 GB на час видео. ~150 MB на час аудио.</p>"
+            },
+            8: {
+                title: "Способы получения готовых файлов?",
+                body: "<p>На вашу флешку или через ссылку в облаке.</p>"
+            },
+            9: {
+                title: "Нужен ли ремонт кассет?",
+                body: "<p>Склейка или ремонт корпуса — 500 рублей за кассету.</p>"
+            },
+            10: {
+                title: "Конфиденциальность?",
+                body: "<p>100% приватность. Работаю один, удаляю данные через неделю после выдачи.</p>"
+            },
+            11: {
+                title: "Почему выбирают меня?",
+                body: "<p>Честный расчет (без учета пустот), профессиональное железо и личная ответственность.</p>"
+            }
+        };
+
+        function openFaq(id) {
+            const data = faqData[id];
+            document.getElementById('faqTitle').innerText = data.title;
+            document.getElementById('faqBody').innerHTML = data.body;
+            document.getElementById('faqModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
+
+        function closeFaq() {
+            document.getElementById('faqModal').style.display = 'none';
+            if (document.getElementById('orderModal').style.display !== 'flex') {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
         function openModal() {
             document.getElementById('formWrapper').classList.remove('hidden');
             document.getElementById('successWrapper').classList.add('hidden');
             document.getElementById('orderModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
             document.getElementById('orderModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            if (document.getElementById('faqModal').style.display !== 'flex') {
+                document.body.style.overflow = 'auto';
+            }
         }
         
         const form = document.getElementById("orderForm");
@@ -368,12 +400,6 @@
           });
         }
         form.addEventListener("submit", handleSubmit);
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('orderModal')) {
-                closeModal();
-            }
-        }
     </script>
 </body>
 </html>
