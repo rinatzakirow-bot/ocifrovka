@@ -46,9 +46,25 @@
             align-items: center;
             justify-content: center;
         }
+        /* Стили для плавающей кнопки */
+        .sticky-order-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 40;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+
+    <!-- Floating Action Button -->
+    <button onclick="openModal()" class="sticky-order-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full flex items-center transition-all md:py-4 md:px-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Сделать заказ
+    </button>
 
     <!-- Header -->
     <header class="bg-white border-b sticky top-0 z-50">
