@@ -92,6 +92,14 @@
             justify-content: center;
             z-index: 40;
             pointer-events: none; /* Пропускаем клики сквозь контейнер */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .bottom-order-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .sticky-order-btn-center {
@@ -169,8 +177,8 @@
         </a>
     </div>
 
-    <!-- Фиксированная кнопка заказа внизу по центру -->
-    <div class="bottom-order-container">
+    <!-- Фиксированная кнопка заказа внизу по центру (плавающая) -->
+    <div id="floatingBtnContainer" class="bottom-order-container">
         <button onclick="openModal()" class="sticky-order-btn-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full flex items-center transition-all pulse-btn">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -185,7 +193,7 @@
             <h2 class="text-2xl md:text-4xl font-bold text-center mb-12">Выберите ваш вопрос</h2>
             
             <div class="space-y-6">
-                <!-- FAQ Item 1: Форматы -->
+                <!-- FAQ Items (без изменений) -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(1)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -195,7 +203,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 2: Передача -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(2)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -206,7 +213,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 3: Стоимость -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(3)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,7 +222,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 4: Срок -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(4)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -226,7 +231,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 12: Качество -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(12)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -237,7 +241,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 5: Оборудование -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(5)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -247,7 +250,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 13: Неизвестно содержимое -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(13)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -257,7 +259,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 6: Формат файлов -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(6)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -267,7 +268,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 7: Место -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(7)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -277,7 +277,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 8: Получение -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(8)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,7 +286,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 9: Ремонт -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(9)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -298,7 +296,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 10: Конфиденциальность -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(10)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -308,7 +305,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 11: Почему выбирают -->
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(11)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -325,7 +321,6 @@
                 <p class="text-2xl font-bold text-blue-500 text-center mb-8 pulse-instruction">введите количество имеющихся кассет</p>
                 
                 <div class="space-y-8 mb-10">
-                    <!-- Кассеты от камеры -->
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                         <div class="flex-1">
                             <label class="block text-gray-800 font-bold text-lg mb-1">От камеры (маленькие)</label>
@@ -338,7 +333,6 @@
                         </div>
                     </div>
 
-                    <!-- Видеокассеты VHS -->
                     <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-t border-blue-100 pt-8">
                         <div class="flex-1">
                             <label class="block text-gray-800 font-bold text-lg mb-1">Видеокассеты от видеомагнитофона</label>
@@ -352,7 +346,6 @@
                     </div>
                 </div>
 
-                <!-- Результат -->
                 <div class="text-center bg-white rounded-2xl p-6 border-2 border-blue-200 shadow-md">
                     <p class="text-gray-500 mb-1 font-normal uppercase tracking-wider text-xs">Ориентировочный максимум:</p>
                     <div class="text-4xl md:text-5xl font-extrabold text-blue-600 transition-all" id="calcTotalPrice">0 ₽</div>
@@ -363,9 +356,9 @@
                 </div>
             </div>
 
-            <!-- Увеличенная кнопка под FAQ -->
+            <!-- Увеличенная кнопка под FAQ (основная) -->
             <div class="mt-16 text-center">
-                <button onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white text-2xl md:text-3xl font-bold py-6 px-16 rounded-full shadow-2xl transition-all w-full max-w-xl">
+                <button id="mainOrderBtn" onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white text-2xl md:text-3xl font-bold py-6 px-16 rounded-full shadow-2xl transition-all w-full max-w-xl">
                     Сделать заказ
                 </button>
             </div>
@@ -444,6 +437,24 @@
     </footer>
 
     <script>
+        // Логика видимости плавающей кнопки
+        const mainBtn = document.getElementById('mainOrderBtn');
+        const floatingContainer = document.getElementById('floatingBtnContainer');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Основную кнопку видно — скрываем плавающую
+                    floatingContainer.classList.remove('visible');
+                } else {
+                    // Основную кнопку НЕ видно — показываем плавающую
+                    floatingContainer.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(mainBtn);
+
         const faqData = {
             1: {
                 title: "С какими форматами кассет работаю?",
