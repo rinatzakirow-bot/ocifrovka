@@ -82,7 +82,7 @@
             max-width: 42rem;
         }
 
-        /* Стили для плавающей кнопки */
+        /* Стили для плавающей кнопки заказа */
         .sticky-order-btn {
             position: fixed;
             bottom: 24px;
@@ -92,6 +92,31 @@
             font-size: 1.3rem;
             animation: pulse-blue 2s infinite;
         }
+
+        /* Кнопка чата в Telegram слева — стилизованная под бренд */
+        .sticky-chat-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 40;
+            background-color: #0088cc; /* Фирменный синий Telegram */
+            color: #ffffff;
+            padding: 1rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 25px -5px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+        .sticky-chat-btn:hover {
+            background-color: #0077b5;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(0, 136, 204, 0.5);
+        }
+
         /* Улучшение тач-зон */
         input, textarea, button {
             font-size: 16px !important;
@@ -116,6 +141,14 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
+
+    <!-- Плавающая кнопка чата Telegram (брендированная) -->
+    <a href="https://t.me/ocifrovka_rinat" target="_blank" class="sticky-chat-btn">
+        <svg class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.52.26l.215-3.048 5.548-5.013c.24-.213-.054-.334-.373-.121l-6.858 4.318-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.847.922z"/>
+        </svg>
+        Задать вопрос в Telegram
+    </a>
 
     <!-- Floating Action Button -->
     <button onclick="openModal()" class="sticky-order-btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full flex items-center transition-all shadow-2xl">
@@ -322,7 +355,7 @@
             <p class="text-blue-200 mb-12 text-lg max-w-xl mx-auto opacity-90">Ваши воспоминания заслуживают самого лучшего качества и бережного отношения.</p>
             <div class="flex justify-center flex-wrap gap-5">
                  <a href="https://t.me/ocifrovka_rinat" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-16 py-6 rounded-full font-bold transition-all shadow-2xl flex items-center text-xl hover:scale-105 active:scale-95">
-                    Связаться в Telegram
+                    Задать вопрос в Telegram
                 </a>
             </div>
         </div>
@@ -410,7 +443,7 @@
             },
             13: {
                 title: "Не знаете что на кассетах?",
-                body: "<p>Если у вас есть кассеты с неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 1800 ₽.</p>"
+                body: "<p>Если у вас есть кассеты with неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 1800 ₽.</p>"
             },
             6: {
                 title: "В каком формате я получу записи?",
