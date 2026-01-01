@@ -125,9 +125,9 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .tg-btn {
+        .tg-link {
             background-color: #0088cc;
-            color: white;
+            color: white !important;
             padding: 10px 20px;
             border-radius: 9999px;
             font-weight: 700;
@@ -136,10 +136,9 @@
             gap: 8px;
             box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
             transition: transform 0.2s;
-            cursor: pointer;
-            border: none;
+            text-decoration: none !important;
         }
-        .tg-btn:active { transform: scale(0.95); }
+        .tg-link:active { transform: scale(0.95); }
 
         /* Улучшение тач-зон */
         input, textarea, button {
@@ -171,13 +170,13 @@
 
     <!-- Закрепленная кнопка Telegram вверху -->
     <div class="top-telegram-bar">
-        <!-- Вызов JS функции для отказоустойчивого открытия -->
-        <button onclick="openTelegram()" class="tg-btn">
+        <!-- Прямая ссылка на профиль (самый надежный способ) -->
+        <a href="https://t.me/RinatZakiroff" target="_blank" class="tg-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.39.51-.46-.01-1.33-.26-1.98-.48-.8-.27-1.43-.42-1.37-.89.03-.25.38-.51 1.03-.78 4.04-1.76 6.74-2.92 8.09-3.48 3.85-1.6 4.64-1.88 5.17-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.02.21z"/>
             </svg>
             Задать вопрос в Телеграм
-        </button>
+        </a>
     </div>
 
     <!-- Фиксированная кнопка заказа внизу по центру (плавающая) -->
@@ -440,35 +439,6 @@
     </footer>
 
     <script>
-        /**
-         * Самый отказоустойчивый метод открытия Telegram.
-         * Сначала пробует открыть приложение напрямую. 
-         * Если через 2 секунды фокус окна не потерян (приложение не открылось),
-         * делает редирект на зеркало t-do.ru.
-         */
-        function openTelegram() {
-            const username = 'RinatZakiroff';
-            const appUrl = `tg://resolve?domain=${username}`;
-            const webMirrorUrl = `https://t-do.ru/${username}`;
-            
-            let opened = false;
-            
-            // Пытаемся открыть приложение
-            window.location.href = appUrl;
-
-            // Таймер для проверки: если через 2 сек мы все еще здесь, открываем зеркало
-            setTimeout(() => {
-                if (!document.hidden && !opened) {
-                    window.location.href = webMirrorUrl;
-                }
-            }, 2000);
-
-            // Обработчик потери фокуса (значит приложение открылось)
-            window.onblur = function() {
-                opened = true;
-            };
-        }
-
         // Логика видимости плавающей кнопки
         const mainBtn = document.getElementById('mainOrderBtn');
         const floatingContainer = document.getElementById('floatingBtnContainer');
@@ -526,7 +496,7 @@
                 body: "<p>Видео: <strong>MPEG-2 (720x576)</strong>. Аудио: <strong>MP3</strong>.</p><p class='mt-4'>Это самый оптимальный вариант для оцифровки кассет, обеспечивающий баланс качества и совместимости. Важно понимать: когда кто-то обещает оцифровать старые кассеты в <strong>высоком разрешении (HD или 4K) — это ложь и чистый маркетинг</strong>.</p>"
             },
             7: {
-                title: "Сколько места займут файлы?",
+                title: "Сколько места зайдят файлы?",
                 body: "<p>~2,7 GB на час видео. ~150 MB на час аудио.</p>"
             },
             8: {
