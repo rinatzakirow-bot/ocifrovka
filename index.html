@@ -174,10 +174,10 @@
 </head>
 <body class="bg-gray-50 text-gray-900 pb-24">
 
-    <!-- КНОПКА ТЕЛЕГРАМ - ОБНОВЛЕННЫЙ ПУНКТ -->
+    <!-- КНОПКА ТЕЛЕГРАМ - ОБНОВЛЕННЫЙ ПУНКТ (Патч для прямой работы приложения) -->
     <div class="top-telegram-bar">
-        <!-- Прямая ссылка через https://t.me/ - работает в мобильных сетях лучше всего -->
-        <a href="https://t.me/RinatZakiroff" target="_blank" rel="noopener" class="tg-link">
+        <!-- Ссылка tg://resolve?domain= лучше открывается на смартфонах даже при блокировках -->
+        <a href="tg://resolve?domain=RinatZakiroff" class="tg-link">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.39.51-.46-.01-1.33-.26-1.98-.48-.8-.27-1.43-.42-1.37-.89.03-.25.38-.51 1.03-.78 4.04-1.76 6.74-2.92 8.09-3.48 3.85-1.6 4.64-1.88 5.17-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.02.21z"/>
             </svg>
@@ -205,7 +205,7 @@
                 <div class="border-2 rounded-2xl p-6 cursor-pointer hover:border-blue-400 shadow-sm hover:shadow-lg bg-gray-50 flex justify-center items-center transition-all" onclick="openFaq(1)">
                     <div class="flex flex-row-reverse items-center justify-between w-full gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                         </svg>
                         <h3 class="font-bold text-xl text-left">С какими форматами кассет работаю?</h3>
                     </div>
