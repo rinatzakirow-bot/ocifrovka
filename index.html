@@ -9,17 +9,18 @@
     <style>
         /* Базовые настройки для удобства чтения на мобильных устройствах */
         html {
-            font-size: 18px; /* Увеличенный базовый размер шрифта */
+            font-size: 18px;
         }
         @media (min-width: 768px) {
             html {
-                font-size: 16px; /* Возврат к стандарту для десктопов */
+                font-size: 16px;
             }
         }
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            line-height: 1.6; /* Увеличенный межстрочный интервал */
+            line-height: 1.6;
+            padding-top: 70px; /* Компенсация отступа для контента из-за верхней плашки */
         }
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
@@ -56,8 +57,8 @@
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(15, 23, 42, 0.4); /* Полупрозрачный темный фон */
-            backdrop-filter: blur(8px); /* Размытие заднего фона */
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
             padding: 1rem;
@@ -91,7 +92,7 @@
             display: flex;
             justify-content: center;
             z-index: 40;
-            pointer-events: none; /* Пропускаем клики сквозь контейнер */
+            pointer-events: none;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease-in-out;
@@ -103,7 +104,7 @@
         }
         
         .sticky-order-btn-center {
-            pointer-events: auto; /* Включаем клики для самой кнопки */
+            pointer-events: auto;
             padding: 1.25rem 2.5rem;
             font-size: 1.3rem;
             box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
@@ -116,29 +117,31 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 50;
+            z-index: 9999; /* Максимальный приоритет */
             display: flex;
             justify-content: center;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
 
         .tg-link {
-            background-color: #0088cc;
+            background-color: #0088cc !important;
             color: white !important;
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: 9999px;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
-            transition: transform 0.2s;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+            transition: all 0.2s;
             text-decoration: none !important;
+            cursor: pointer;
+            border: none;
         }
-        .tg-link:active { transform: scale(0.95); }
+        .tg-link:active { transform: scale(0.96); opacity: 0.9; }
 
         /* Улучшение тач-зон */
         input, textarea, button {
@@ -161,15 +164,13 @@
             background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
-        
-        /* Компенсация отступа для контента из-за верхней плашки */
-        body { padding-top: 70px; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 pb-24">
 
     <!-- Закрепленная кнопка Telegram вверху -->
     <div class="top-telegram-bar">
+        <!-- Прямая ссылка с target="_blank" — самый надежный метод перехода -->
         <a href="https://t.me/RinatZakiroff" target="_blank" rel="noopener noreferrer" class="tg-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.39.51-.46-.01-1.33-.26-1.98-.48-.8-.27-1.43-.42-1.37-.89.03-.25.38-.51 1.03-.78 4.04-1.76 6.74-2.92 8.09-3.48 3.85-1.6 4.64-1.88 5.17-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.02.21z"/>
@@ -488,14 +489,14 @@
             },
             13: {
                 title: "Не знаете что на кассетах?",
-                body: "<p>Если у вас есть кассеты with unknown contents, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 2070 ₽.</p>"
+                body: "<p>Если у вас есть кассеты с неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 2070 ₽.</p>"
             },
             6: {
                 title: "В каком формате я получу записи?",
                 body: "<p>Видео: <strong>MPEG-2 (720x576)</strong>. Аудио: <strong>MP3</strong>.</p><p class='mt-4'>Это самый оптимальный вариант для оцифровки кассет, обеспечивающий баланс качества и совместимости. Важно понимать: когда кто-то обещает оцифровать старые кассеты в <strong>высоком разрешении (HD или 4K) — это ложь и чистый маркетинг</strong>.</p>"
             },
             7: {
-                title: "Сколько места зайдят файлы?",
+                title: "Сколько места займут файлы?",
                 body: "<p>~2,7 GB на час видео. ~150 MB на час аудио.</p>"
             },
             8: {
@@ -529,9 +530,6 @@
             const camCount = parseInt(document.getElementById('camCountInput').value) || 0;
             const vhsCount = parseInt(document.getElementById('vhsCountInput').value) || 0;
             const warning = document.getElementById('calcWarningText');
-            // Новая стоимость: 23 руб/мин. 
-            // 1.5ч = 90 мин * 23 = 2070 руб.
-            // 3ч = 180 мин * 23 = 4140 руб.
             let calculatedTotal = (camCount * 2070) + (vhsCount * 4140);
             if (camCount === 0 && vhsCount === 0) {
                 document.getElementById('calcTotalPrice').innerText = '0 ₽';
