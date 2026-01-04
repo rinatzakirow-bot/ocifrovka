@@ -2,14 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Профессиональная оцифровка видео и аудио в Москве</title>
+    
+    <!-- Предварительное подключение для ускорения в мобильных сетях -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Базовые настройки для удобства чтения на мобильных устройствах */
         html {
             font-size: 18px;
+            -webkit-text-size-adjust: 100%;
         }
         @media (min-width: 768px) {
             html {
@@ -22,6 +29,12 @@
             line-height: 1.6;
             padding-top: 70px; /* Компенсация отступа для контента из-за верхней плашки */
         }
+
+        /* Устранение задержки клика и оптимизация тач-взаимодействия */
+        button, a, .tg-link, input, textarea {
+            touch-action: manipulation;
+        }
+
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
