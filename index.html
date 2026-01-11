@@ -206,8 +206,9 @@
     <!-- Фиксированная кнопка ВОЗВРАТА внизу по центру -->
     <div id="floatingBtnContainer" class="bottom-order-container">
         <a href="https://www.rinatocifrovka.ru" class="sticky-order-btn-center bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full flex items-center transition-all shadow-xl">
+            <!-- Пиктограмма возврата (стрелка назад) -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             На главную страницу
         </a>
@@ -402,7 +403,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
-                    Назад к списку вопросов
+                    Назад к спилку вопросов
                 </button>
             </div>
         </div>
@@ -463,7 +464,7 @@
     </footer>
 
     <script>
-        // Логика видимости плавающей кнопки (теперь кнопки "На главную страницу")
+        // Логика видимости плавающей кнопки
         const mainBtn = document.getElementById('mainOrderBtn');
         const floatingContainer = document.getElementById('floatingBtnContainer');
 
@@ -513,7 +514,7 @@
             },
             13: {
                 title: "Не знаете что на кассетах?",
-                body: "<p>Если у вас есть кассеты with неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 2070 ₽.</p>"
+                body: "<p>Если у вас есть кассеты с неизвестным содержимым, я отправлю вам три скриншота с каждой из них. Как правило, этого достаточно, чтобы определить, нужна ли оцифровка.</p><p class='mt-4'><strong>Стоимость опции:</strong> 300 ₽ за одну кассету.</p><p class='mt-4'>Если оцифровка не потребуется вовсе, заказ оценивается как минимальный т. е. 2070 ₽.</p>"
             },
             6: {
                 title: "В каком формате я получу записи?",
