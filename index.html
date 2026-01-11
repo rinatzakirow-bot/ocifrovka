@@ -43,13 +43,13 @@
         .gradient-bg {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
-        @keyframes pulse-blue {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
         }
         .pulse-btn {
-            animation: pulse-blue 2s infinite;
+            animation: pulse-red 2s infinite;
         }
 
         /* Анимация мерцания для предупреждения в калькуляторе */
@@ -383,9 +383,9 @@
                 </div>
             </div>
 
-            <!-- Увеличенная кнопка под FAQ (основная) -->
+            <!-- КРАСНАЯ кнопка под FAQ -->
             <div class="mt-16 text-center">
-                <button id="mainOrderBtn" onclick="openModal()" class="pulse-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 px-16 rounded-full shadow-2xl transition-all w-full max-w-xl" style="font-size: clamp(1.2rem, 3vw, 2rem);">
+                <button id="mainOrderBtn" onclick="openModal()" class="pulse-btn bg-red-600 hover:bg-red-700 text-white font-bold py-6 px-16 rounded-full shadow-2xl transition-all w-full max-w-xl" style="font-size: clamp(1.2rem, 3vw, 2rem);">
                     Сделать заказ
                 </button>
             </div>
@@ -436,7 +436,7 @@
                         <label class="block text-xl font-bold mb-3">Комментарий (по желанию)</label>
                         <textarea name="message" rows="4" placeholder="Сколько кассет и какие форматы?" class="w-full bg-white border-2 border-gray-200 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none shadow-sm text-xl md:text-2xl transition-all"></textarea>
                     </div>
-                    <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-7 rounded-2xl shadow-xl transition-all active:scale-95" style="font-size: clamp(1.2rem, 3vw, 1.75rem);">
+                    <button type="submit" id="submitBtn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-7 rounded-2xl shadow-xl transition-all active:scale-95" style="font-size: clamp(1.2rem, 3vw, 1.75rem);">
                         Отправить мастеру
                     </button>
                     <button type="button" onclick="closeModal()" class="mt-6 w-full text-gray-500 font-bold py-4 hover:text-gray-700 transition-colors text-xl">
